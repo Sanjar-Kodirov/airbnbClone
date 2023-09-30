@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <Navbar />
+          <h1>content</h1>
         </ClientOnly>
         {children}
       </body>
