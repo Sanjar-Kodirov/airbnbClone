@@ -5,6 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 
 
@@ -14,6 +15,7 @@ const UserMenu: React.FC<any> = ({
   currentUser
 }) => {
   const router = useRouter();
+  const registerModal = useRegisterModal();
 
 
   const [isOpen, setIsOpen] = useState(false);
@@ -105,7 +107,7 @@ const UserMenu: React.FC<any> = ({
             <hr />
             <MenuItem
               label="Logout"
-              onClick={() => console.log()}
+              onClick={() => registerModal.onOpen()}
             />
           </div>
         </div>
