@@ -8,12 +8,15 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { signOut } from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
 
 
+interface UserMenuProps {
+  currentUser: User | null
+}
 
 
-
-const UserMenu: React.FC<any> = ({
+const UserMenu: React.FC<UserMenuProps> = ({
   currentUser
 }) => {
   const router = useRouter();

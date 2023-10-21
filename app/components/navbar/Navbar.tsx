@@ -5,6 +5,7 @@ import Search from "./Search";
 
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
+import { User } from "@prisma/client";
 
 interface NavbarProps {
     currentUser?: any;

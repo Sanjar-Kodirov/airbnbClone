@@ -43,6 +43,8 @@ const LoginModal = () => {
         (data) => {
             setIsLoading(true);
 
+            console.log('data', data)
+
             signIn('credentials', {
                 ...data,
                 redirect: false,
@@ -56,9 +58,9 @@ const LoginModal = () => {
                         loginModal.onClose();
                     }
 
-                    if (callback?.error) {
-                        toast.error(callback.error);
-                    }
+                    // if (callback?.error) {
+                    //     toast.error(callback.error);
+                    // }
                 });
         }
 
