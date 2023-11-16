@@ -2,12 +2,13 @@
 
 import Heading from '@/app/components/Heading'
 import CategoryInput from '@/app/components/inputs/CategoryInput'
+import CountrySelect from '@/app/components/inputs/CountrySelect'
 import Modal from '@/app/components/modals/Modal'
 import { categories } from '@/app/components/navbar/Categories'
 import useRentModal from '@/app/hooks/useRentModal'
 import React, { useMemo, useState } from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
-
+import Map from '@/app/components/Map'
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
@@ -45,6 +46,9 @@ const RentModal = () => {
   });
 
   const category = watch('category');
+  const location = watch('location');
+
+  console.log('location', location)
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -69,7 +73,7 @@ const RentModal = () => {
     }
 
     return 'Next'
-  }, [])
+  }, [step])
 
 
   const secondaryActionLabel = useMemo(() => {
@@ -78,18 +82,11 @@ const RentModal = () => {
     }
 
     return 'Back'
-  }, [])
+  }, [step])
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    // if (step !== STEPS.PRICE) {
-    //   return onNext();
-    // }
-
     console.log(data)
   }
-
-
-
 
 
   let bodyContent = (
@@ -123,12 +120,27 @@ const RentModal = () => {
     </div>
   )
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you!"
+        />
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCustomValue('location', value)}
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
 
   return (
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={() => handleSubmit(onSubmit)}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       secondaryActionLabel={secondaryActionLabel}
