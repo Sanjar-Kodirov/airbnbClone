@@ -1,12 +1,13 @@
+import ClientOnly from '@/app/ClientOnly'
+import getCurrentUser from '@/app/actions/getCurrentUser'
+import LoginModal from '@/app/components/modals/LoginModal'
+import RegisterModal from '@/app/components/modals/RegisterModal'
+import RentModal from '@/app/components/modals/RentModal'
 import Navbar from '@/app/components/navbar/Navbar'
-import './globals.css'
+import ToasterProvider from '@/app/providers/ToasterProvider'
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
-import ClientOnly from '@/app/ClientOnly'
-import RegisterModal from '@/app/components/modals/RegisterModal'
-import ToasterProvider from '@/app/providers/ToasterProvider'
-import LoginModal from '@/app/components/modals/LoginModal'
-import getCurrentUser from '@/app/actions/getCurrentUser'
+import './globals.css'
 
 const font = Nunito({ subsets: ['latin'] })
 
@@ -22,6 +23,9 @@ export default async function RootLayout({
 }) {
   const currentUser = await getCurrentUser()
   console.log('currentUser', currentUser)
+
+
+
   return (
     <html lang="en">
 
@@ -31,6 +35,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <RegisterModal />
           <LoginModal />
+          <RentModal />
           <Navbar currentUser={currentUser} />
 
         </ClientOnly>

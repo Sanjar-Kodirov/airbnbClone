@@ -11,10 +11,12 @@ import Modal from '@/app/components/modals/Modal'
 import Heading from '@/app/components/Heading'
 import Input from '@/app/components/inputs/Input'
 import toast from 'react-hot-toast'
+import useLoginModal from '@/app/hooks/useLoginModal'
 
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
     const {
         register,
@@ -32,7 +34,7 @@ const RegisterModal = () => {
 
     const onToggle = useCallback(() => {
         registerModal.onClose();
-        // loginModal.onOpen();
+        loginModal.onOpen();
     }, [registerModal])
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback((data) => {

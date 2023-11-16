@@ -14,3 +14,7 @@ passwords: psm7BWnTm2FJZfUf
 
 1. install next auth by comand: npm install next-auth @prisma/client @next-auth/prisma-adapter
 2. next install npm i bcrypt next install types for: npm i -D @types/bcrypt
+
+
+2. making categories
+   setValue is not rerendering the page

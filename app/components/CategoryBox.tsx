@@ -20,9 +20,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     const params = useSearchParams();
 
-
-
-
     const handleClick = useCallback(() => {
         let currentQuery = {};
 
@@ -45,6 +42,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         }, { skipNull: true });
 
         router.push(url);
+
     }, [label, router, params]);
 
     return (
