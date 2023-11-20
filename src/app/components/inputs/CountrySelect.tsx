@@ -1,8 +1,8 @@
 'use client';
 
+import useCountries from '@/src/app/hooks/useCountries';
 import Select from 'react-select'
 
-import useCountries from '@/app/hooks/useCountries';
 
 export type CountrySelectValue = {
   flag: string;
@@ -23,7 +23,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
 }) => {
   const { getAll } = useCountries();
 
-  return ( 
+  return (
     <div>
       <Select
         placeholder="Anywhere"
@@ -48,6 +48,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
           input: () => 'text-lg',
           option: () => 'text-lg'
         }}
+        /* @ts-ignore */
         theme={(theme: { colors: any; }) => ({
           ...theme,
           borderRadius: 6,
@@ -59,7 +60,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
         })}
       />
     </div>
-   );
+  );
 }
- 
+
 export default CountrySelect;

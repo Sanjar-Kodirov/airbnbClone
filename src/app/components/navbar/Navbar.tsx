@@ -3,10 +3,10 @@ import Container from "../Container";
 
 import Search from "./Search";
 
-import Categories from "@/app/components/navbar/Categories";
-import { SafeUser } from "@/app/types";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
+import Categories from "@/src/app/components/navbar/Categories";
+import { SafeUser } from "@/src/app/types";
 
 interface NavbarProps {
     currentUser?: SafeUser | null;

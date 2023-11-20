@@ -1,15 +1,17 @@
 'use client'
 
-import Heading from '@/app/components/Heading'
-import CategoryInput from '@/app/components/inputs/CategoryInput'
-import CountrySelect from '@/app/components/inputs/CountrySelect'
-import Modal from '@/app/components/modals/Modal'
-import { categories } from '@/app/components/navbar/Categories'
-import useRentModal from '@/app/hooks/useRentModal'
+import Heading from '@/src/app/components/Heading'
+import CategoryInput from '@/src/app/components/inputs/CategoryInput'
+import Counter from '@/src/app/components/inputs/Counter'
+import CountrySelect from '@/src/app/components/inputs/CountrySelect'
+import ImageUpload from '@/src/app/components/inputs/ImageUpload'
+import Modal from '@/src/app/components/modals/Modal'
+import { categories } from '@/src/app/components/navbar/Categories'
+import useRentModal from '@/src/app/hooks/useRentModal'
 import React, { useMemo, useState } from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
-import Map from '@/app/components/Map'
-import Counter from '@/app/components/inputs/Counter'
+
+import Map from '@/src/app/components/Map'
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
@@ -167,6 +169,21 @@ const RentModal = () => {
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
         />
+      </div>
+    )
+  }
+
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Show guests what your place looks like!"
+        />
+        <ImageUpload
+          onChange={(value: any) => setCustomValue('imageSrc', value)}
+          value={imageSrc} />
       </div>
     )
   }
