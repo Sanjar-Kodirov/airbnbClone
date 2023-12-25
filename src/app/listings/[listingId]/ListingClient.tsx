@@ -1,19 +1,19 @@
 "use client";
 
-import axios from "axios";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { toast } from "react-hot-toast";
-import { Range } from "react-date-range";
-import { useRouter } from "next/navigation";
 import { differenceInDays, eachDayOfInterval } from "date-fns";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Range } from "react-date-range";
 
 import Container from "@/src/app/components/Container";
-import { categories } from "@/src/app/components/navbar/Categories";
 import ListingInfo from "@/src/app/components/listings/ListingInfo";
 import ListingReservation from "@/src/app/components/listings/ListingReservation";
+import { categories } from "@/src/app/components/navbar/Categories";
 import ListingHead from "../../components/listings/ListingHead";
 import useLoginModal from "../../hooks/useLoginModal";
-import { SafeReservation, SafeListing, SafeUser } from "../../types";
+import { SafeListing, SafeReservation, SafeUser } from "../../types";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -65,13 +65,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
       return loginModal.onOpen();
     }
     setIsLoading(true);
-
-    console.log(
-      totalPrice,
-      dateRange.startDate,
-      dateRange.endDate,
-      listing?.id
-    );
 
     axios
       .post("/api/reservations", {
