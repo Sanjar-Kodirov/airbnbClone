@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ClientOnly from "./ClientOnly";
 import EmptyState from "./components/EmptyState";
 import getListings, { IListingsParams } from "./actions/getListings";
